@@ -27,20 +27,51 @@
 
         <section class="projects">
             <h2>FEATURED PROJECTS</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <div class="project-placeholder">
-                        <span class="placeholder-text">Project 1</span>
+            <div class="projects-container">
+                <button class="scroll-btn scroll-left" id="scrollLeft">‹</button>
+                <div class="project-grid" id="projectGrid">
+                    <div class="project-item">
+                        <div class="project-placeholder">
+                            <span class="placeholder-text">Project 1</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-placeholder">
+                            <span class="placeholder-text">Project 2</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-placeholder">
+                            <span class="placeholder-text">Project 3</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-placeholder">
+                            <span class="placeholder-text">Project 4</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-placeholder">
+                            <span class="placeholder-text">Project 5</span>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-placeholder">
+                            <span class="placeholder-text">Project 6</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-item">
-                    <div class="project-placeholder">
-                        <span class="placeholder-text">Project 2</span>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-placeholder">
-                        <span class="placeholder-text">Project 3</span>
+                <button class="scroll-btn scroll-right" id="scrollRight">›</button>
+            </div>
+        </section>
+
+        <!-- Project Showcase Section -->
+        <section class="project-showcase" id="projectShowcase">
+            <div class="showcase-content">
+                <h2 id="showcaseTitle">Select a Project to View Details</h2>
+                <div class="showcase-details" id="showcaseDetails">
+                    <div class="showcase-placeholder">
+                        <p>Click on any project above to see its details, description, and technologies used.</p>
                     </div>
                 </div>
             </div>
@@ -65,7 +96,106 @@
                 img.classList.add("icon");
                    
                 grid.appendChild(img);
-            }</script>
+            }
+
+                // Project scrolling functionality
+                const projectGrid = document.getElementById('projectGrid');
+                const scrollLeftBtn = document.getElementById('scrollLeft');
+                const scrollRightBtn = document.getElementById('scrollRight');
+
+                scrollLeftBtn.addEventListener('click', () => {
+                    projectGrid.scrollBy({
+                        left: -320, // 300px width + 20px gap
+                        behavior: 'smooth'
+                    });
+                });
+
+                scrollRightBtn.addEventListener('click', () => {
+                    projectGrid.scrollBy({
+                        left: 320, // 300px width + 20px gap
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Update button visibility based on scroll position
+                const updateButtonVisibility = () => {
+                    const isAtStart = projectGrid.scrollLeft <= 0;
+                    const isAtEnd = projectGrid.scrollLeft >= (projectGrid.scrollWidth - projectGrid.clientWidth);
+                    
+                    scrollLeftBtn.style.opacity = isAtStart ? '0.5' : '1';
+                    scrollRightBtn.style.opacity = isAtEnd ? '0.5' : '1';
+                    
+                    scrollLeftBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
+                    scrollRightBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+                };
+
+                projectGrid.addEventListener('scroll', updateButtonVisibility);
+                updateButtonVisibility(); // Initial check
+
+                // Project showcase functionality
+                const projectItems = document.querySelectorAll('.project-item');
+                const showcaseTitle = document.getElementById('showcaseTitle');
+                const showcaseDetails = document.getElementById('showcaseDetails');
+
+                // Sample project data
+                const projectData = {
+                    1: {
+                        title: "3D Portfolio Website",
+                        description: "A stunning 3D portfolio website built with modern web technologies. Features interactive 3D elements, smooth animations, and responsive design. Perfect for showcasing creative work and technical skills.",
+                        image: "3D Portfolio Preview"
+                    },
+                    2: {
+                        title: "E-Commerce Platform",
+                        description: "A full-stack e-commerce solution with user authentication, payment processing, and inventory management. Built with modern frameworks and best practices for scalability and performance.",
+                        image: "E-Commerce Platform"
+                    },
+                    3: {
+                        title: "Mobile App Development",
+                        description: "Cross-platform mobile application with native performance and beautiful UI. Features include real-time data synchronization, offline capabilities, and push notifications.",
+                        image: "Mobile App Preview"
+                    },
+                    4: {
+                        title: "Data Visualization Dashboard",
+                        description: "Interactive dashboard for data analysis and visualization. Features real-time charts, filtering capabilities, and export functionality for business intelligence.",
+                        image: "Dashboard Preview"
+                    },
+                    5: {
+                        title: "AI Chatbot Integration",
+                        description: "Intelligent chatbot powered by machine learning and natural language processing. Provides customer support, answers queries, and learns from interactions.",
+                        image: "AI Chatbot Interface"
+                    },
+                    6: {
+                        title: "Cloud Infrastructure",
+                        description: "Scalable cloud infrastructure setup with automated deployment, monitoring, and security. Implements DevOps best practices and microservices architecture.",
+                        image: "Cloud Architecture"
+                    }
+                };
+
+                // Add click functionality to project items
+                projectItems.forEach((item, index) => {
+                    item.addEventListener('click', () => {
+                        const projectNumber = index + 1;
+                        const project = projectData[projectNumber];
+                        
+                        if (project) {
+                            showcaseTitle.textContent = project.title;
+                            showcaseDetails.innerHTML = `
+                                <div class="project-details active">
+                                    <div class="project-info">
+                                        <div class="project-image">
+                                            ${project.image}
+                                        </div>
+                                        <div class="project-description">
+                                            <h3>${project.title}</h3>
+                                            <p>${project.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    });
+                });
+            </script>
 
     </body>
 </html>
