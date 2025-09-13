@@ -1,40 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
 
-    
     <head>
         <meta charset="UTF-8">
-        <meata name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>3D Portfolio - Ry</title>
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>My 3d Portfolio</title> 
         <link rel="stylesheet" href="style.css">
+    </head>
     
-        </head>
-        <body>
-            <header>
-                <h1>Ry's 3D Art Portfolio </h1>
-            
-                <nav>
-                <a href="about">About</a>
-                <a href="gallery">Gallery</a>
-                <a href="contact">Contact</a>
-                </nav>
-            </header>
+    <body>
 
-    <section id="about">
-      <h2>About me</h2>
-      <p>3D Artist Specializing in Sci-fi/Environment Design</p>
-    </section>
+        <div class="icon-grid">     
+        </div>
 
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <img src="images/render1.jpg" alt="3D Render Example">
-        <img src="images/render2.jpg" alt="3D Render Example">
-        </section>
+        <h1>Welcome to My 3D Portfolio</h1>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>20241016@nbsc.edu.ph</p>
-    </section>
+        <script>
+           
+            const grid = document.querySelector(".icon-grid");
+            const iconCount = 100;
 
+            for (let i = 0; i <iconCount; i++){
+                const img = document.createElement("img");
+                img.src = "images/icon.png"; 
+                img.classList.add("icon");
+                   
+                grid.appendChild(img);
+            }
+        </script>
     </body>
 </html>
