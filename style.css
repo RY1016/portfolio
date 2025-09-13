@@ -5,6 +5,48 @@ body {
     color: white;
     font-family: arial, sans-serif;
 }
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+    z-index: 10;
+    border-bottom: 5px solid #4a3c8a;
+    border-top: 1px solid #2a1f4a;
+    margin-bottom: 20px;
+}
+
+.nav-right {
+    display: flex;
+    gap: 30px;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    flex: 1;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    padding: 8px 100px;
+    border-radius: 4px;
+}
+
+.nav-link:hover {
+    color: #ffea00;
+    background-color: rgba(255, 255, 255, 0.507);
+}
 .icon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, 15px);
@@ -30,14 +72,29 @@ body {
     min-height: 70vh;
     display: flex; /* section fills full screen */
     flex-direction: column; /* use flexbox */
-    justify-content: top; /* stack text vertically */
-    align-items: left; /* center vertically */
-    text-align: left; /* center horizontally */
+    justify-content: top; /* center vertically */
+    align-items: left; /* center horizontally */
+    text-align: left; /* center text */
+    position: relative; /* for absolute positioning of image */
+}
+
+.hero-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-height: 100%;
+    z-index: 1;
+    opacity: 0.8;
+    object-fit: cover;
 }
 
 .hero h1 {
     font-size: 3rem;
     font-weight: bold;
+    position: relative;
+    z-index: 2;
 }
 .hero p {
     font-size: 1.2rem;
@@ -64,7 +121,6 @@ body {
 
 
 
-/* Header Styling */
 h1 {
     font-size: 3rem;
     font-family: 'Arial', sans-serif;
