@@ -82,6 +82,15 @@
             <h2>ABOUT ME</h2>
         </section>
 
+        <!-- Image Modal -->
+        <div class="image-modal" id="imageModal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeModal">&times;</span>
+                <img src="" alt="" id="modalImage">
+                <div class="modal-caption" id="modalCaption"></div>
+            </div>
+        </div>
+
             
             
             
@@ -189,7 +198,7 @@
                             
                             let imageContent;
                             if (project.imageType === "image") {
-                                imageContent = `<img src="${project.image}" alt="${project.title}" class="showcase-project-image">`;
+                                imageContent = `<img src="${project.image}" alt="${project.title}" class="showcase-project-image" data-project-title="${project.title}" data-project-description="${project.description}">`;
                             } else {
                                 imageContent = project.image;
                             }
@@ -209,6 +218,46 @@
                             `;
                         }
                     });
+                });
+
+                // Image modal functionality
+                const imageModal = document.getElementById('imageModal');
+                const modalImage = document.getElementById('modalImage');
+                const modalCaption = document.getElementById('modalCaption');
+                const closeModal = document.getElementById('closeModal');
+
+                // Add click event listener to showcase images
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('showcase-project-image')) {
+                        const img = e.target;
+                        modalImage.src = img.src;
+                        modalImage.alt = img.alt;
+                        modalCaption.textContent = img.dataset.projectDescription || img.alt;
+                        imageModal.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    }
+                });
+
+                // Close modal functionality
+                closeModal.addEventListener('click', () => {
+                    imageModal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                });
+
+                // Close modal when clicking outside the image
+                imageModal.addEventListener('click', (e) => {
+                    if (e.target === imageModal) {
+                        imageModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+
+                // Close modal with Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && imageModal.style.display === 'block') {
+                        imageModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
                 });
             </script>
 
