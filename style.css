@@ -45,7 +45,7 @@ body {
 
 .nav-link:hover {
     color: #ffea00;
-    background-color: rgba(255, 255, 255, 0.507);
+    background-color: rgba(255, 255, 255, 0.193);
 }
 .icon-grid {
     display: grid;
@@ -102,12 +102,68 @@ body {
 }
 
 .projects {
-    min-height: 75vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: top;
     align-items: left;
     text-align: left;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: -25px;
+    padding: 20px 0;
+}
+
+.project-item {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-placeholder {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(135deg, #2a1f4a 0%, #4a3c8a 100%);
+    border: 2px solid #4a3c8a;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(74, 60, 138, 0.3);
+}
+
+.project-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-placeholder:hover::before {
+    left: 100%;
+}
+
+.placeholder-text {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 1;
+    position: relative;
 }
 
 .about_me {
