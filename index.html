@@ -30,9 +30,10 @@
             <div class="projects-container">
                 <button class="scroll-btn scroll-left" id="scrollLeft">‹</button>
                 <div class="project-grid" id="projectGrid">
+                    
                     <div class="project-item">
                         <div class="project-placeholder">
-                            <span class="placeholder-text">Project 1</span>
+                            <img src="images/project_1.png" alt="Project 1" class="featured-project-image">                 
                         </div>
                     </div>
                     <div class="project-item">
@@ -57,7 +58,7 @@
                     </div>
                     <div class="project-item">
                         <div class="project-placeholder">
-                            <span class="placeholder-text">Project 6</span>
+                            <img src="images/project_6.jpg" alt="Project 6" class="featured-project-image">
                         </div>
                     </div>
                 </div>
@@ -140,34 +141,40 @@
                 // Sample project data
                 const projectData = {
                     1: {
-                        title: "3D Portfolio Website",
-                        description: "A stunning 3D portfolio website built with modern web technologies. Features interactive 3D elements, smooth animations, and responsive design. Perfect for showcasing creative work and technical skills.",
-                        image: "3D Portfolio Preview"
+                        title: "Kairos Nova",
+                        description: "A stunning Alien Creature...",
+                        image: "images/project_1.png",
+                        imageType: "image"
                     },
                     2: {
-                        title: "E-Commerce Platform",
+                        title: "Project 2",
                         description: "A full-stack e-commerce solution with user authentication, payment processing, and inventory management. Built with modern frameworks and best practices for scalability and performance.",
-                        image: "E-Commerce Platform"
+                        image: "Project 2 Preview",
+                        imageType: "text"
                     },
                     3: {
-                        title: "Mobile App Development",
+                        title: "Project 3",
                         description: "Cross-platform mobile application with native performance and beautiful UI. Features include real-time data synchronization, offline capabilities, and push notifications.",
-                        image: "Mobile App Preview"
+                        image: "Project 3 Preview",
+                        imageType: "text"
                     },
                     4: {
-                        title: "Data Visualization Dashboard",
+                        title: "Project 4",
                         description: "Interactive dashboard for data analysis and visualization. Features real-time charts, filtering capabilities, and export functionality for business intelligence.",
-                        image: "Dashboard Preview"
+                        image: "Project 4 Preview",
+                        imageType: "text"
                     },
                     5: {
-                        title: "AI Chatbot Integration",
+                        title: "Project 5",
                         description: "Intelligent chatbot powered by machine learning and natural language processing. Provides customer support, answers queries, and learns from interactions.",
-                        image: "AI Chatbot Interface"
+                        image: "Project 5 Preview",
+                        imageType: "text"
                     },
                     6: {
-                        title: "Cloud Infrastructure",
+                        title: "Project 6",
                         description: "Scalable cloud infrastructure setup with automated deployment, monitoring, and security. Implements DevOps best practices and microservices architecture.",
-                        image: "Cloud Architecture"
+                        image: "images/project_6.jpg",
+                        imageType: "image"
                     }
                 };
 
@@ -179,11 +186,19 @@
                         
                         if (project) {
                             showcaseTitle.textContent = project.title;
+                            
+                            let imageContent;
+                            if (project.imageType === "image") {
+                                imageContent = `<img src="${project.image}" alt="${project.title}" class="showcase-project-image">`;
+                            } else {
+                                imageContent = project.image;
+                            }
+                            
                             showcaseDetails.innerHTML = `
                                 <div class="project-details active">
                                     <div class="project-info">
                                         <div class="project-image">
-                                            ${project.image}
+                                            ${imageContent}
                                         </div>
                                         <div class="project-description">
                                             <h3>${project.title}</h3>
