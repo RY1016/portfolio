@@ -9,24 +9,36 @@
     </head>
     
     <body>
+        <div class="icon-grid"></div>
 
-        <div class="icon-grid">     
-        </div>
-
+        <section class="hero">
         <h1>Welcome to My 3D Portfolio</h1>
+        </section>
 
-        <script>
-           
-            const grid = document.querySelector(".icon-grid");
-            const iconCount = 100;
+        <section class="projects">
+            <h2>FEATURED PROJECTS</h2>
+        </section>
 
-            for (let i = 0; i <iconCount; i++){
+        <section class="about_me">
+            <h2>ABOUT ME</h2>
+        </section>
+
+            
+            
+            
+            
+            
+            <script>          
+                const grid = document.querySelector(".icon-grid");
+                const iconCount = 2000;
+
+                for (let i = 0; i <iconCount; i++){
                 const img = document.createElement("img");
                 img.src = "images/Icon.png"; 
                 img.classList.add("icon");
                    
                 grid.appendChild(img);
-            }
-        </script>
+            }</script>
+
     </body>
 </html>

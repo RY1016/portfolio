@@ -1,16 +1,15 @@
 body {
-    margin: 0;
+    margin: 0 200px;
     padding: 0;
     background-color: #140f2e;
     color: white;
     font-family: arial, sans-serif;
 }
-
 .icon-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 100px);
+    grid-template-columns: repeat(auto-fill, 15px);
 
-    gap: 100px;
+    gap: 80px;
 
     justify-content: center;
 
@@ -21,10 +20,67 @@ body {
     height: 100%;
     z-index: -1;
 }
-
 .icon {
-    width: 30px;
+    width: 30px; /* Size of Icon */
     opacity: 0.2;
     pointer-events: none;
     margin-top: -100px;
+}
+.hero {
+    min-height: 70vh;
+    display: flex; /* section fills full screen */
+    flex-direction: column; /* use flexbox */
+    justify-content: top; /* stack text vertically */
+    align-items: left; /* center vertically */
+    text-align: left; /* center horizontally */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.projects {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: left;
+    text-align: left;
+}
+
+.about_me {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: left;
+    text-align: left;
+}
+
+
+
+/* Header Styling */
+h1 {
+    font-size: 3rem;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2rem;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #ffffff;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #dddddd;
+  max-width: 700px;
 }
